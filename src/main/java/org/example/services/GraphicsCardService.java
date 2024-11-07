@@ -26,6 +26,18 @@ public class GraphicsCardService implements Service<GraphicsCard> {
     }
 
     @Override
+    public boolean edit() {
+        GraphicsCard graphicsCard = graphicsCardAppHelper.edit(this.getRepository().load());
+
+        if (graphicsCard != null) {
+            graphicsCardRepository.save(graphicsCard);
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
     public boolean print() {
         return graphicsCardAppHelper.printList(this.getRepository().load());
     }

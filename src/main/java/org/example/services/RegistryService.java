@@ -32,6 +32,11 @@ public class RegistryService implements Service<Registry> {
     }
 
     @Override
+    public boolean edit() {
+        return false;
+    }
+
+    @Override
     public Repository<Registry> getRepository() {
         return repositoryRegistry;
     }

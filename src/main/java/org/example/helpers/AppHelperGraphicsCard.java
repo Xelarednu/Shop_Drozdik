@@ -34,12 +34,60 @@ public class AppHelperGraphicsCard implements AppHelper<GraphicsCard> {
             System.out.println("Graphics card release year: ");
             graphicsCard.setReleaseYear(Integer.parseInt(scanner.nextLine()));
 
-
             return graphicsCard;
         } catch (Exception e){
             System.out.println("Error: "+e.toString());
             return null;
         }
+    }
+
+    @Override
+    public GraphicsCard edit(List<GraphicsCard> graphicsCards) {
+        System.out.println("===== Change graphics card data =====");
+
+        printList(graphicsCards);
+        System.out.println("Select graphics card to edit: ");
+        int gpuNumber = scanner.nextInt();
+
+        GraphicsCard selectedGpu = graphicsCards.get(gpuNumber - 1);
+
+        System.out.println("Change graphics card manufacturer?(y/n)");
+        scanner.nextLine();
+        if (scanner.nextLine().trim().equalsIgnoreCase ("y")) {
+            System.out.println("Enter card's new manufacturer: ");
+            scanner.nextLine();
+            selectedGpu.setManufacturer(scanner.nextLine());
+        }
+
+        System.out.println("Change graphics card name?(y/n)");
+        if (scanner.nextLine().trim().equalsIgnoreCase ("y")) {
+            System.out.println("Enter card's new name: ");
+            scanner.nextLine();
+            selectedGpu.setName(scanner.nextLine());
+        }
+
+        System.out.println("Change graphics card price?(y/n)");
+        if (scanner.nextLine().trim().equalsIgnoreCase ("y")) {
+            System.out.println("Enter card's new price: ");
+            scanner.nextLine();
+            selectedGpu.setPrice(scanner.nextInt());
+        }
+
+        System.out.println("Change graphics card memory size?(y/n)");
+        if (scanner.nextLine().trim().equalsIgnoreCase ("y")) {
+            System.out.println("Enter card's new memory size: ");
+            scanner.nextLine();
+            selectedGpu.setMemorySize(scanner.nextInt());
+        }
+
+        System.out.println("Change graphics card release year?(y/n)");
+        if (scanner.nextLine().trim().equalsIgnoreCase ("y")) {
+            System.out.println("Enter card's new release year: ");
+            scanner.nextLine();
+            selectedGpu.setReleaseYear(scanner.nextInt());
+        }
+
+        return selectedGpu;
     }
 
     @Override

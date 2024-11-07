@@ -53,6 +53,11 @@ public class AppHelperRegistry implements AppHelper<Registry>{
     }
 
     @Override
+    public Registry edit(List<Registry> entities) {
+        return null;
+    }
+
+    @Override
     public boolean printList(List<Registry> entities) {
         return false;
     }

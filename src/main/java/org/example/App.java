@@ -33,6 +33,7 @@ public class App {
             System.out.println("3. Add new client");
             System.out.println("4. List of clients");
             System.out.println("5. Buy product");
+            System.out.println("6. Edit product");
             System.out.print("Select option from list: ");
             int option = scanner.nextInt();
             switch (option) {
@@ -65,6 +66,13 @@ public class App {
                     } else {
                         System.out.println("The gpu was not sold");
                     }
+                case 6:
+                    if(graphicsCardService.edit()) {
+                        System.out.println("The product has been updated");
+                    } else {
+                        System.out.println("The product was not updated");
+                    }
+                    break;
                 default:
                     System.out.println("Invalid option!");
             }

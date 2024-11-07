@@ -14,10 +14,14 @@ public class Storage<T> implements Repository<T> {
     @Override
     public void save(T entity) {
         List<T> entities = this.load();
-        if(entities == null) {entities = new ArrayList<>();}
+        if(entities == null) {
+            entities = new ArrayList<>();
+        }
+
         entities.add(entity);
         FileOutputStream fileOutputStream = null;
         ObjectOutputStream objectOutputStream = null;
+
         try {
             fileOutputStream = new FileOutputStream(fileName);
             objectOutputStream = new ObjectOutputStream(fileOutputStream);
@@ -31,9 +35,13 @@ public class Storage<T> implements Repository<T> {
     }
     @Override
     public void saveAll(List<T> entities) {
-        if(entities == null) {entities = new ArrayList<>();}
+        if(entities == null) {
+            entities = new ArrayList<>();
+        }
+
         FileOutputStream fileOutputStream = null;
         ObjectOutputStream objectOutputStream = null;
+
         try {
             fileOutputStream = new FileOutputStream(fileName);
             objectOutputStream = new ObjectOutputStream(fileOutputStream);

@@ -91,6 +91,17 @@ public class AppHelperGraphicsCard implements AppHelper<GraphicsCard> {
     }
 
     @Override
+    public GraphicsCard delete(List<GraphicsCard> graphicsCards) {
+        printList(graphicsCards);
+        System.out.print("Select GPU to delete: ");
+        int gpuNumber = scanner.nextInt();
+
+        GraphicsCard selectedGpu = graphicsCards.get(gpuNumber - 1);
+
+        return selectedGpu;
+    }
+
+    @Override
     public boolean printList(List<GraphicsCard> graphicsCards) {
         if (graphicsCards == null || graphicsCards.isEmpty()){
             System.out.println(" --- List is empty --- ");

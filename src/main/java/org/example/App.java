@@ -34,6 +34,7 @@ public class App {
             System.out.println("4. List of clients");
             System.out.println("5. Buy product");
             System.out.println("6. Edit product");
+            System.out.println("7. Delete product");
             System.out.print("Select option from list: ");
             int option = scanner.nextInt();
             switch (option) {
@@ -73,6 +74,12 @@ public class App {
                         System.out.println("The product was not updated");
                     }
                     break;
+                case 7:
+                    if(graphicsCardService.delete()) {
+                        System.out.println("The product has been deleted");
+                    } else {
+                        System.out.println("The product was not deleted");
+                    }
                 default:
                     System.out.println("Invalid option!");
             }

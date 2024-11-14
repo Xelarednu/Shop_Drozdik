@@ -36,6 +36,11 @@ public class AppHelperUser implements AppHelper<User>{
     }
 
     @Override
+    public User delete(List<User> entities) {
+        return null;
+    }
+
+    @Override
     public boolean printList(List<User> users) {
         if (users == null || users.isEmpty()) {
             System.out.println(" --- List of customers is empty --- ");

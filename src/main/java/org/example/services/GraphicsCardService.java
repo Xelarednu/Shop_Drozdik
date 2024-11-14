@@ -38,6 +38,18 @@ public class GraphicsCardService implements Service<GraphicsCard> {
     }
 
     @Override
+    public boolean delete() {
+        GraphicsCard graphicsCard = graphicsCardAppHelper.delete(this.getRepository().load());
+
+        if (graphicsCard != null) {
+            graphicsCardRepository.delete(graphicsCard);
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
     public boolean print() {
         return graphicsCardAppHelper.printList(this.getRepository().load());
     }

@@ -6,5 +6,6 @@ public interface Service<T> {
     boolean add();
     boolean print();
     boolean edit();
+    boolean delete();
     Repository<T> getRepository();
 }

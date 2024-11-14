@@ -37,6 +37,11 @@ public class UserService implements Service<User>{
     }
 
     @Override
+    public boolean delete() {
+        return false;
+    }
+
+    @Override
     public Repository<User> getRepository() {
         return userRepository;
     }

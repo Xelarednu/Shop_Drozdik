@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Storage<T> implements Repository<T> {
-    private String fileName;
+    private final String fileName;
 
     public Storage(String fileName) {
         this.fileName = fileName;
@@ -70,5 +70,31 @@ public class Storage<T> implements Repository<T> {
             System.out.println("Class not found: "+e.toString());
         }
         return new ArrayList<T>();
+    }
+
+    @Override
+    public void delete(T entity) {
+        List<T> entities = this.load();
+
+        if (entities == null || entities.isEmpty()) {
+            System.out.println("No entries to delete.");
+            return;
+        }
+
+        entities.remove(entity);
+
+        FileOutputStream fileOutputStream = null;
+        ObjectOutputStream objectOutputStream = null;
+
+        try {
+            fileOutputStream = new FileOutputStream(fileName);
+            objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(entities);
+            objectOutputStream.flush();
+        } catch (FileNotFoundException e) {
+            System.out.println("There is no such file: " + e.toString());
+        } catch (IOException e) {
+            System.out.println("I/O error: " + e.toString());
+        }
     }
 }
